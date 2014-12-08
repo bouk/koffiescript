@@ -1,47 +1,47 @@
-[FikaScript](http://fikascript.se)
+[KoffieScript](http://koffiescript.nl)
 ==========
-![Swedish Flag](/assets/img/flag.png)  
-FikaScript lets you write JavaScript in Swedish; Finally there is a way for Swedes to code in their native language!
-It is named after [fika](http://en.wikipedia.org/wiki/Fika_(coffee_break)), the sacred Swedish coffee break.
+![Dutch Flag](/assets/img/flag.png)
 
-See it in action [here](http://fikascript.se). 
-### Including FikaScript files in your HTML
+KoffieScript lets you write JavaScript in Dutch; Finally there is a way for Dutch people to code in their native language!
 
-- Include [fikascript.js](dist/fikascript.js) and [fikascript.browser.js](dist/fikascript.browser.js).
+See it in action [here](http://koffiescript.nl).
+### Including KoffieScript files in your HTML
+
+- Include [koffiescript.js](dist/koffiescript.js) and [koffiescript.browser.js](dist/koffiescript.browser.js).
 - Make sure your html is set to allow utf-8 characters (add `<meta charset="utf-8">` in the <head>).
 
-FikaScript supports the `text/fikascript` MIME type. Any script tag with that type will be compiled and run automatically:
-```html
-<script type="text/fikascript">
-  om (x < 5) {
-    konsol.log("hej!");
-  } annars {
-    konsol.log("nej!");
+KoffieScript supports the `text/koffiescript` MIME type. Any script tag with that type will be compiled and run automatically:
+```htmls
+<script type="text/koffiescript">
+  als (x < 5) {
+    console.log("hallo!");
+  } anders {
+    console.log("dacht het niet!");
   }
 </script>
 ```
 
-You can also specify a `src` for your script tags: 
+You can also specify a `src` for your script tags:
 ```html
-<script type="text/fikascript" src="snaps.fika"></script>
+<script type="text/koffiescript" src="snaps.koffie"></script>
 ```
 
 #### Optional
 
-##### Convert from FikaScript to JavaScript:
+##### Convert from KoffieScript to JavaScript:
 
 ```javascript
-FikaScript.swedishToEnglish(code); // returns a string representing the translated code
+KoffieScript.DutchToEnglish(code); // returns a string representing the translated code
 ```
 
-##### Convert from JavaScript to FikaScript:
+##### Convert from JavaScript to KoffieScript:
 
 ```javascript
-FikaScript.englishToSwedish(code); // returns a string representing the translated code
+KoffieScript.EnglishToDutch(code); // returns a string representing the translated code
 ```
 
 ### Missing/incorrect translations?
-You can see the translations over [here](https://github.com/pushmatrix/fikascript/blob/gh-pages/dist/fikascript.js#L4). Feel free to submit a pull request!
+You can see the translations over [here](https://github.com/bouk/koffiescript/blob/gh-pages/dist/koffiescript.js#L4). Feel free to submit a pull request!
 
 ###TO-DOs
 - Syntax highlighting for unicode chars

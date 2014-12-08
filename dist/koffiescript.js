@@ -1,47 +1,47 @@
 FS = {};
-FikaScript = FS;
+KoffieScript = FS;
 
 FS.keywords = {
-  function: 'funktion',
-        if: 'om',
-      else: 'annars',
-       for: 'för',
-     while: 'medan',
-    return: 'returnera',
-        do: 'gör',
+  function: 'functie',
+        if: 'als',
+      else: 'anders',
+       for: 'voor',
+     while: 'terwijl',
+    return: 'terugkeer',
+        do: 'doe',
        var: 'var',
-        in: 'inuti',
-       let: 'låt',
-       new: 'ny',
-       try: 'försök',
-      case: 'fall',
-      this: 'detta',
-      with: 'med',
-     break: 'bryt',
-     throw: 'kasta',
-     catch: 'fånga',
-    switch: 'byt',
-  continue: 'fortsätt',
-  debugger: 'avlusare',
-instanceof: 'instansav',
-    typeof: 'typav',
-      void: 'tom',
-    delete: 'tabort',
-   default: 'standard',
-   finally: 'slutligen'
+        in: 'in',
+       let: 'laat',
+       new: 'nieuwe',
+       try: 'probeer',
+      case: 'geval',
+      this: 'dit',
+      with: 'met',
+     break: 'breek',
+     throw: 'gooi',
+     catch: 'vang',
+    switch: 'schakelaar',
+  continue: 'doorgaan',
+  debugger: 'probleemvinder',
+instanceof: 'gevalvan',
+    typeof: 'typevan',
+      void: 'leegte',
+    delete: 'verwijder',
+   default: 'standaard',
+   finally: 'eindelijk'
 };
- 
+
 FS.literals = {
-      true: 'sant',
-     false: 'falskt',
-      null: 'noll'
+      true: 'waar',
+     false: 'onwaar',
+      null: 'nihil'
 };
- 
+
 FS.identifiers = {
-  document: 'dokument',
-  console: 'konsol',
-  alert:  'ropa',
-  prompt: 'fråga'
+  document: 'document',
+  console: 'console',
+  alert:  'roep',
+  prompt: 'vraag'
 };
 
 function mergeObjects(objects){
@@ -57,38 +57,38 @@ function reverseObject(object) {
   var result = {};
   for (attrname in object) {
     var key = object[attrname];
-    result[key] = attrname; 
+    result[key] = attrname;
   }
   return result;
 };
 
-FS.swedishTokens = mergeObjects([FS.keywords, FS.literals, FS.identifiers]);
+FS.DutchTokens = mergeObjects([FS.keywords, FS.literals, FS.identifiers]);
 
-FS.englishTokens = {};
-for (token in FS.swedishTokens) {
-  FS.englishTokens[token] = token;
+FS.EnglishTokens = {};
+for (token in FS.DutchTokens) {
+  FS.EnglishTokens[token] = token;
 }
 
-FS.englishKeywords = {};
+FS.EnglishKeywords = {};
 for (token in FS.keywords) {
-  FS.englishKeywords[token] = token;
+  FS.EnglishKeywords[token] = token;
 }
 
 // LOLOLOL
-FS.swedishToEnglishKeywords = reverseObject(FS.keywords);
-FS.englishToEnglishKeywords = {};
+FS.DutchToEnglishKeywords = reverseObject(FS.keywords);
+FS.EnglishToEnglishKeywords = {};
 for (keyword in FS.keywords) {
-  FS.englishToEnglishKeywords[keyword] = keyword;
+  FS.EnglishToEnglishKeywords[keyword] = keyword;
 }
 
-FS.swedishToEnglishIdentifiers = reverseObject(FS.identifiers);
-FS.englishToSwedishIdentifiers = FS.identifiers;
+FS.DutchToEnglishIdentifiers = reverseObject(FS.identifiers);
+FS.EnglishToDutchIdentifiers = FS.identifiers;
 
 // Create a reverse hash for the above translations
-FS.inputKeywords = FS.swedishToEnglishKeywords;
-FS.inputIdentifiers = FS.swedishToEnglishIdentifiers; 
-FS.tokens = FS.swedishTokens;
-FS.outputTokens = FS.englishTokens;
+FS.inputKeywords = FS.DutchToEnglishKeywords;
+FS.inputIdentifiers = FS.DutchToEnglishIdentifiers;
+FS.tokens = FS.DutchTokens;
+FS.outputTokens = FS.EnglishTokens;
 
 (function() {
   var translate = function(code) {
@@ -98,21 +98,21 @@ FS.outputTokens = FS.englishTokens;
     return parsed;
   };
 
-  FS.swedishToEnglish = function(code) {
-    FS.inputKeywords = FS.swedishToEnglishKeywords;
-    FS.inputIdentifiers = FS.swedishToEnglishIdentifiers; 
-    FS.tokens = FS.swedishTokens;
-    FS.outputTokens = FS.englishTokens;
+  FS.DutchToEnglish = function(code) {
+    FS.inputKeywords = FS.DutchToEnglishKeywords;
+    FS.inputIdentifiers = FS.DutchToEnglishIdentifiers;
+    FS.tokens = FS.DutchTokens;
+    FS.outputTokens = FS.EnglishTokens;
     return translate(code);
   }
 
-  FS.englishToSwedish = function(code) {
-    FS.inputKeywords = FS.englishToEnglishKeywords;
-    FS.inputIdentifiers = FS.englishToSwedishIdentifiers; 
-    FS.tokens = FS.englishTokens;
-    FS.outputTokens = FS.swedishTokens;
+  FS.EnglishToDutch = function(code) {
+    FS.inputKeywords = FS.EnglishToEnglishKeywords;
+    FS.inputIdentifiers = FS.EnglishToDutchIdentifiers;
+    FS.tokens = FS.EnglishTokens;
+    FS.outputTokens = FS.DutchTokens;
     return translate(code);
-  } 
+  }
 })();
 
 /*
@@ -1253,7 +1253,7 @@ parseStatement: true, parseSourceElement: true */
         var prevToken,
             checkToken;
         // Using the following algorithm:
-        // https://github.com/mozilla/sweet.js/wiki/design
+        // https://github.com/mozilla/nlet.js/wiki/design
         prevToken = extra.tokens[extra.tokens.length - 1];
         if (!prevToken) {
             // Nothing before that: it cannot be a division.
@@ -3862,35 +3862,35 @@ require._core = {
 require.resolve = (function () {
     return function (x, cwd) {
         if (!cwd) cwd = '/';
-        
+
         if (require._core[x]) return x;
         var path = require.modules.path();
         cwd = path.resolve('/', cwd);
         var y = cwd || '/';
-        
+
         if (x.match(/^(?:\.\.?\/|\/)/)) {
             var m = loadAsFileSync(path.resolve(y, x))
                 || loadAsDirectorySync(path.resolve(y, x));
             if (m) return m;
         }
-        
+
         var n = loadNodeModulesSync(x, y);
         if (n) return n;
-        
+
         throw new Error("Cannot find module '" + x + "'");
-        
+
         function loadAsFileSync (x) {
             x = path.normalize(x);
             if (require.modules[x]) {
                 return x;
             }
-            
+
             for (var i = 0; i < require.extensions.length; i++) {
                 var ext = require.extensions[i];
                 if (require.modules[x + ext]) return x + ext;
             }
         }
-        
+
         function loadAsDirectorySync (x) {
             x = x.replace(/\/+$/, '');
             var pkgfile = path.normalize(x + '/package.json');
@@ -3910,10 +3910,10 @@ require.resolve = (function () {
                     if (m) return m;
                 }
             }
-            
+
             return loadAsFileSync(x + '/index');
         }
-        
+
         function loadNodeModulesSync (x, start) {
             var dirs = nodeModulesPathsSync(start);
             for (var i = 0; i < dirs.length; i++) {
@@ -3923,23 +3923,23 @@ require.resolve = (function () {
                 var n = loadAsDirectorySync(dir + '/' + x);
                 if (n) return n;
             }
-            
+
             var m = loadAsFileSync(x);
             if (m) return m;
         }
-        
+
         function nodeModulesPathsSync (start) {
             var parts;
             if (start === '/') parts = [ '' ];
             else parts = path.normalize(start).split('/');
-            
+
             var dirs = [];
             for (var i = parts.length - 1; i >= 0; i--) {
                 if (parts[i] === 'node_modules') continue;
                 var dir = parts.slice(0, i + 1).join('/') + '/node_modules';
                 dirs.push(dir);
             }
-            
+
             return dirs;
         }
     };
@@ -3955,13 +3955,13 @@ require.alias = function (from, to) {
         res = require.resolve(from, '/');
     }
     var basedir = path.dirname(res);
-    
+
     var keys = (Object.keys || function (obj) {
         var res = [];
         for (var key in obj) res.push(key);
         return res;
     })(require.modules);
-    
+
     for (var i = 0; i < keys.length; i++) {
         var key = keys[i];
         if (key.slice(0, basedir.length + 1) === basedir + '/') {
@@ -3978,18 +3978,18 @@ require.alias = function (from, to) {
     var process = {};
     var global = typeof window !== 'undefined' ? window : {};
     var definedProcess = false;
-    
+
     require.define = function (filename, fn) {
         if (!definedProcess && require.modules.__browserify_process) {
             process = require.modules.__browserify_process();
             definedProcess = true;
         }
-        
+
         var dirname = require._core[filename]
             ? ''
             : require.modules.path().dirname(filename)
         ;
-        
+
         var require_ = function (file) {
             var requiredModule = require(file, dirname);
             var cached = require.cache[require.resolve(file, dirname)];
@@ -4013,7 +4013,7 @@ require.alias = function (from, to) {
             loaded : false,
             parent: null
         };
-        
+
         require.modules[filename] = function () {
             require.cache[filename] = module_;
             fn.call(
@@ -4123,7 +4123,7 @@ path = normalizeArray(filter(path.split('/'), function(p) {
   if (path && trailingSlash) {
     path += '/';
   }
-  
+
   return (isAbsolute ? '/' : '') + path;
 };
 

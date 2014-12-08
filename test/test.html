@@ -2,8 +2,8 @@
 <head>
   <title>Tests!</title>
   <meta charset="utf-8">
-  <script type="text/javascript" src="../dist/fikascript.js"></script>
-  <script type="text/javascript" src="../dist/fikascript.browser.js"></script>
+  <script type="text/javascript" src="../dist/koffiescript.js"></script>
+  <script type="text/javascript" src="../dist/koffiescript.browser.js"></script>
   <style type="text/css">
     .diff {
       color: red;
@@ -28,12 +28,12 @@
     } else {
       window.attachEvent('onload', runTests);
     }
-    FikaScript.run = function(code) {
+    KoffieScript.run = function(code) {
       runTest(code)
     }
 
     function runTests() {
-      FikaScript.load('test.fika');
+      KoffieScript.load('test.koffie');
     }
 
 
@@ -48,10 +48,10 @@
     }
 
     runTest = function(code) {
-      translation = FikaScript.swedishToEnglish(code);
-      translation = FikaScript.englishToSwedish(translation);
-      translation = FikaScript.swedishToEnglish(translation);
-      translation = FikaScript.englishToSwedish(translation);
+      translation = KoffieScript.DutchToEnglish(code);
+      translation = KoffieScript.EnglishToDutch(translation);
+      translation = KoffieScript.DutchToEnglish(translation);
+      translation = KoffieScript.EnglishToDutch(translation);
       code = code.replace(/\s/g, '');
       translation = translation.replace(/\s/g, '');
       if (code != translation) {

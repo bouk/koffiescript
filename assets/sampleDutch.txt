@@ -1,0 +1,28 @@
+// Write JavaScript in Dutch!
+var naam = vraag('Wat is jouw naam?');
+roep('Hallo ' + naam);
+
+als (naam == 'Daan' || naam == 'Anouk') {
+  stroopwafels = 1;
+} anders {
+  stroopwafels = 2;
+}
+
+roep('Zin om te schaatsen?');
+
+probeer {
+  roep('Ik heb zin in Hagelslag');
+  gooi "Oepsie!";
+} vang (uitzonderlijkheid) {
+  roep(uitzonderlijkheid);
+} eindelijk {
+  roep('Tijd om naar Scheveningen te gaan');
+}
+
+hema = 0;
+
+terwijl (waar) {
+  als (++hema > 530) {
+    breek;
+  }
+}

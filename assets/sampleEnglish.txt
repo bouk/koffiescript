@@ -1,29 +1,23 @@
-// Convert from JavaScript to FikaScript
-
-prompt('What is your favourite ABBA album?');
-
-month = 'august';
-if (month != 'july' && month != 'june') {
-  feeling = 'depressed';
-  hair  = 'blonde';
+// Convert from JavaScript to KoffieScript
+var naam = prompt('Wat is jouw naam?');
+alert('Hallo ' + naam);
+if (naam == 'Daan' || naam == 'Anouk') {
+    stroopwafels = 1;
 } else {
-  feeling = 'happy';
-  hair  = 'blonde';
+    stroopwafels = 2;
 }
-
-var names = [
-  'Agnetha',
-  'Björn',
-  'Benny',
-  'Anni-Frid'
-  ];
-
-for (i in names) {
-  console.log(names[i]);
+alert('Zin om te schaatsen?');
+try {
+    alert('Ik heb zin in Hagelslag');
+    throw 'Oepsie!';
+} catch (uitzonderlijkheid) {
+    alert(uitzonderlijkheid);
+} finally {
+    alert('Tijd om naar Scheveningen te gaan');
 }
-
-meatballs = 13;
-stockholmStrollerCount = 0;
-do {
-  stockholmStrollerCount++;
-} while(stockholmStrollerCount <= 9001);
+hema = 0;
+while (true) {
+    if (++hema > 530) {
+        break;
+    }
+}

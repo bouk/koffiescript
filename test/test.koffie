@@ -1,0 +1,36 @@
+functie hallo() {
+  var a = [1,2,3];
+  voor (i in a) {
+  }
+  terugkeer a;
+}
+
+var object = nieuwe hallo();
+
+als ( x < 5 ) {
+  probeer {
+  } vang (exception) {
+    data.stuff = '5';
+  } eindelijk {
+    doe {
+      x++;
+    } terwijl (x<10);
+  }
+
+  voor(var x = 0; x < 10; x++) {
+    als (x % 2) {
+      breek;
+    } anders {
+      schakelaar(x) {
+        geval 5: breek;
+        standaard: breek;
+      }
+      doorgaan;
+    }
+  }
+}
+
+waar;
+onwaar;
+nihil;
+document;
